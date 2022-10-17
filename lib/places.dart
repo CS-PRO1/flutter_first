@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -64,62 +65,65 @@ class StoreScreen extends StatelessWidget {
   }
 
   Widget buildListItem(index) => Card(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Image(image: AssetImage('${pictures[index]}')),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Text(
-                      '${hotels[index]}',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.star,
-                        color: Colors.greenAccent,
-                      ),
-                      Icon(
-                        Icons.star,
-                        color: Colors.greenAccent,
-                      ),
-                      Icon(
-                        Icons.star,
-                        color: Colors.greenAccent,
-                      ),
-                      Icon(
-                        Icons.star,
-                        color: Colors.greenAccent,
-                      ),
-                      Icon(
-                        Icons.star_half,
-                        color: Colors.greenAccent,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Text('${locations[index]}',
+        child: InkWell(
+          onTap: () {},
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                Image(image: AssetImage('${pictures[index]}')),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Text(
+                        '${hotels[index]}',
                         style: TextStyle(
-                          color: Colors.grey,
-                        )),
-                  ),
-                  Text('${prices[index]}'),
-                ],
-              )
-            ],
+                            fontSize: 20, fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.star,
+                          color: Colors.greenAccent,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.greenAccent,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.greenAccent,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.greenAccent,
+                        ),
+                        Icon(
+                          Icons.star_half,
+                          color: Colors.greenAccent,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Text('${locations[index]}',
+                          style: TextStyle(
+                            color: Colors.grey,
+                          )),
+                    ),
+                    Text('${prices[index]}'),
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       );
