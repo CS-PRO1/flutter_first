@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/hotels.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class StoreScreen extends StatelessWidget {
         ),
         title: Center(
           child: Text(
-            'Find Places',
+            'Find Hotels',
             style: TextStyle(color: Colors.black),
           ),
         ),
@@ -50,10 +51,11 @@ class StoreScreen extends StatelessWidget {
           child: Column(
             children: [
               ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) => buildListItem(),
-                  itemCount: Random().nextInt(12))
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: (context, index) => buildListItem(index),
+                itemCount: pictures.length,
+              )
             ],
           ),
         ),
@@ -61,20 +63,21 @@ class StoreScreen extends StatelessWidget {
     );
   }
 
-  Widget buildListItem() => Card(
+  Widget buildListItem(index) => Card(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Image(image: AssetImage('images/zzzz.jpg')),
+              Image(image: AssetImage('${pictures[index]}')),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(5.0),
                     child: Text(
-                      'Image Title',
-                      style: TextStyle(fontSize: 25),
+                      '${hotels[index]}',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                     ),
                   ),
                   Row(
@@ -108,12 +111,12 @@ class StoreScreen extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(5.0),
-                    child: Text('Description of Image',
+                    child: Text('${locations[index]}',
                         style: TextStyle(
                           color: Colors.grey,
                         )),
                   ),
-                  Text('20\$')
+                  Text('${prices[index]}'),
                 ],
               )
             ],

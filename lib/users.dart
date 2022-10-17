@@ -20,7 +20,7 @@ List images = [
   'images/zzzz.jpg',
   'images/me.jpg',
   'images/baby.jpg',
-  'images/nagham.jpg',
+  'images/nezuko-chan.gif',
   'images/flower1.jpg',
   'images/car.png',
   'images/messi.jpg',
