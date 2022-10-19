@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/login_screen.dart';
 import 'package:flutter_application_1/places.dart';
+import 'package:flutter_application_1/profile.dart';
 import 'package:flutter_application_1/users.dart';
 
 class MessengerScreen extends StatelessWidget {
@@ -17,9 +18,15 @@ class MessengerScreen extends StatelessWidget {
             SizedBox(
               width: 10,
             ),
-            CircleAvatar(
-              backgroundColor: Colors.grey,
-              backgroundImage: AssetImage('images/me.jpg'),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => profileScreen()));
+              },
+              child: CircleAvatar(
+                backgroundColor: Colors.grey,
+                backgroundImage: AssetImage('images/me.jpg'),
+              ),
             ),
           ],
         ),
