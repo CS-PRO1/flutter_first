@@ -196,15 +196,19 @@ class _profileScreenState extends State<profileScreen> {
                                         color: Colors.blueGrey[400],
                                         fontWeight: FontWeight.w500),
                                   ),
-                                  IconButton(
-                                      alignment: Alignment.centerRight,
-                                      padding: EdgeInsets.all(0),
-                                      iconSize: 15,
-                                      onPressed: () {},
-                                      icon: Icon(
-                                        Icons.arrow_forward_ios_rounded,
-                                        color: Colors.blueGrey[400],
-                                      )),
+                                  SizedBox(
+                                    width: 16,
+                                    child: IconButton(
+                                        alignment: Alignment.centerLeft,
+                                        splashRadius: 1,
+                                        padding: EdgeInsets.all(0),
+                                        iconSize: 15,
+                                        onPressed: () {},
+                                        icon: Icon(
+                                          Icons.arrow_forward_ios_rounded,
+                                          color: Colors.blueGrey[400],
+                                        )),
+                                  ),
                                 ],
                               )
                             ],
