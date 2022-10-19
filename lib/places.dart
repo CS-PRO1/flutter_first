@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/hotels.dart';
+import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 
 class StoreScreen extends StatefulWidget {
   const StoreScreen({Key? key}) : super(key: key);
@@ -17,6 +18,7 @@ class _StoreScreenState extends State<StoreScreen> {
         size: 50,
       ));
   var isLiked = List<bool>.filled(hotels.length, false);
+  var value = List<double>.filled(hotels.length, 0.0);
 
   @override
   Widget build(BuildContext context) {
@@ -77,90 +79,111 @@ class _StoreScreenState extends State<StoreScreen> {
 
   Widget buildListItem(index) {
     return Card(
+      clipBehavior: Clip.antiAlias,
+      elevation: 5,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: InkWell(
         onTap: () {},
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Stack(
-                alignment: AlignmentDirectional.topEnd,
-                children: [
-                  Image(image: AssetImage('${pictures[index]}')),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 16.0),
-                    child: IconButton(
-                      splashRadius: 1,
-                      onPressed: () {
-                        setState(() {
-                          if (isLiked[index]) {
-                            isLiked[index] = false;
-                            hearts[index] = Icon(Icons.favorite_border_rounded,
-                                size: 50, color: Colors.grey[200]);
-                          } else {
-                            isLiked[index] = true;
-                            hearts[index] = Icon(Icons.favorite_rounded,
-                                size: 50, color: Colors.pinkAccent);
-                          }
-                        });
-                      },
-                      icon: hearts[index],
-                    ),
+        child: Column(
+          children: [
+            Stack(
+              alignment: AlignmentDirectional.topEnd,
+              children: [
+                Image(
+                    isAntiAlias: true, image: AssetImage('${pictures[index]}')),
+                Padding(
+                  padding: const EdgeInsets.only(right: 16.0),
+                  child: IconButton(
+                    splashRadius: 1,
+                    onPressed: () {
+                      setState(() {
+                        if (isLiked[index]) {
+                          isLiked[index] = false;
+                          hearts[index] = Icon(Icons.favorite_border_rounded,
+                              size: 50, color: Colors.grey[200]);
+                        } else {
+                          isLiked[index] = true;
+                          hearts[index] = Icon(Icons.favorite_rounded,
+                              size: 50, color: Colors.pinkAccent);
+                        }
+                      });
+                    },
+                    icon: hearts[index],
                   ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Text(
-                      '${hotels[index]}',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Text(
+                          '${hotels[index]}',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.w500),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          // Icon(
+                          //   Icons.star,
+                          //   color: Colors.greenAccent,
+                          // ),
+                          // Icon(
+                          //   Icons.star,
+                          //   color: Colors.greenAccent,
+                          // ),
+                          // Icon(
+                          //   Icons.star,
+                          //   color: Colors.greenAccent,
+                          // ),
+                          // Icon(
+                          //   Icons.star,
+                          //   color: Colors.greenAccent,
+                          // ),
+                          // Icon(
+                          //   Icons.star_half,
+                          //   color: Colors.greenAccent,
+                          // ),
+                          RatingStars(
+                            animationDuration: Duration(seconds: 1),
+                            starColor: Colors.greenAccent,
+                            starSize: 16,
+                            value: value[index],
+                            valueLabelVisibility: false,
+                            onValueChanged: (star) {
+                              setState(() {
+                                value[index] = star;
+                              });
+                            },
+                          )
+                        ],
+                      ),
+                    ],
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Icon(
-                        Icons.star,
-                        color: Colors.greenAccent,
+                      Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Text('${locations[index]}',
+                            style: TextStyle(
+                              color: Colors.grey,
+                            )),
                       ),
-                      Icon(
-                        Icons.star,
-                        color: Colors.greenAccent,
-                      ),
-                      Icon(
-                        Icons.star,
-                        color: Colors.greenAccent,
-                      ),
-                      Icon(
-                        Icons.star,
-                        color: Colors.greenAccent,
-                      ),
-                      Icon(
-                        Icons.star_half,
-                        color: Colors.greenAccent,
-                      ),
+                      Text('${prices[index]}'),
                     ],
                   ),
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Text('${locations[index]}',
-                        style: TextStyle(
-                          color: Colors.grey,
-                        )),
-                  ),
-                  Text('${prices[index]}'),
-                ],
-              )
-            ],
-          ),
+            )
+          ],
         ),
       ),
     );
