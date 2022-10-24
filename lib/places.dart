@@ -24,21 +24,18 @@ class _StoreScreenState extends State<StoreScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
           icon: Icon(
             Icons.menu_rounded,
-            color: Colors.black,
             size: 28,
           ),
         ),
         title: Center(
           child: Text(
             'Find Hotels',
-            style: TextStyle(color: Colors.black),
           ),
         ),
         actions: [
@@ -46,16 +43,15 @@ class _StoreScreenState extends State<StoreScreen> {
             onPressed: () {},
             icon: Icon(
               Icons.filter_list_rounded,
-              color: Colors.black,
             ),
           ),
           IconButton(
             onPressed: () {},
             icon: Icon(
               Icons.search,
-              color: Colors.black,
             ),
           )
+          
         ],
       ),
       body: Padding(
@@ -67,7 +63,7 @@ class _StoreScreenState extends State<StoreScreen> {
               ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemBuilder: (context, index) => buildListItem(index),
+                itemBuilder: (context, index) => buildListItem(index, context),
                 itemCount: pictures.length,
               )
             ],
@@ -77,7 +73,7 @@ class _StoreScreenState extends State<StoreScreen> {
     );
   }
 
-  Widget buildListItem(index) {
+  Widget buildListItem(index, context) {
     return Card(
       clipBehavior: Clip.antiAlias,
       elevation: 5,
@@ -122,11 +118,8 @@ class _StoreScreenState extends State<StoreScreen> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(5.0),
-                        child: Text(
-                          '${hotels[index]}',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.w500),
-                        ),
+                        child: Text('${hotels[index]}',
+                            style: Theme.of(context).textTheme.headline3),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -177,7 +170,10 @@ class _StoreScreenState extends State<StoreScreen> {
                               color: Colors.grey,
                             )),
                       ),
-                      Text('${prices[index]}'),
+                      Text(
+                        '${prices[index]}',
+                        style: Theme.of(context).textTheme.subtitle1,
+                      ),
                     ],
                   ),
                 ],

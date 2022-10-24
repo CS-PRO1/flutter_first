@@ -4,14 +4,14 @@ import 'package:flutter_application_1/main.dart';
 
 import 'users.dart';
 
-class profileScreen extends StatefulWidget {
-  const profileScreen({Key? key}) : super(key: key);
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({Key? key}) : super(key: key);
 
   @override
-  State<profileScreen> createState() => _profileScreenState();
+  State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _profileScreenState extends State<profileScreen> {
+class _ProfileScreenState extends State<ProfileScreen> {
   bool switchvalue = false;
   @override
   Widget build(BuildContext context) {
@@ -43,11 +43,13 @@ class _profileScreenState extends State<profileScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Center(
-                  child: Container(
-                    color: Colors.grey[100],
+                Container(
+                  width: double.infinity,
+                  color: Theme.of(context).canvasColor,
+                  child: Material(
+                    color: Colors.transparent,
                     child: Padding(
-                      padding: const EdgeInsets.all(5.0),
+                      padding: const EdgeInsets.all(20.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -58,10 +60,7 @@ class _profileScreenState extends State<profileScreen> {
                           SizedBox(height: 10),
                           Text(
                             'Ochako Uraraka',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 32,
-                                fontWeight: FontWeight.w500),
+                            style: Theme.of(context).textTheme.headline4,
                           ),
                           SizedBox(height: 5),
                           Text('+963 937 438 298',
@@ -75,60 +74,75 @@ class _profileScreenState extends State<profileScreen> {
                           SizedBox(
                             height: 60,
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                SizedBox(width: 30),
-                                Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Icon(
-                                      CupertinoIcons.phone_fill,
-                                      color: Colors.green,
-                                      size: 35,
-                                    ),
-                                    Text(
-                                      'Audio',
-                                      style: TextStyle(
-                                          fontSize: 15, color: Colors.green),
-                                    )
-                                  ],
+                                //SizedBox(width: 30),
+                                InkWell(
+                                  onTap: () {},
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Icon(
+                                        CupertinoIcons.phone_fill,
+                                        color: Theme.of(context).primaryColor,
+                                        size: 35,
+                                      ),
+                                      Text(
+                                        'Audio',
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
-                                Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Icon(
-                                      CupertinoIcons.video_camera_solid,
-                                      color: Colors.green,
-                                      size: 40,
-                                    ),
-                                    Text(
-                                      'Video',
-                                      style: TextStyle(
-                                          fontSize: 15, color: Colors.green),
-                                    )
-                                  ],
+                                InkWell(
+                                  onTap: () {},
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Icon(
+                                        CupertinoIcons.video_camera_solid,
+                                        color: Theme.of(context).primaryColor,
+                                        size: 40,
+                                      ),
+                                      Text(
+                                        'Video',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            color:
+                                                Theme.of(context).primaryColor),
+                                      )
+                                    ],
+                                  ),
                                 ),
-                                Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Icon(
-                                      CupertinoIcons.search,
-                                      color: Colors.green,
-                                      size: 35,
-                                    ),
-                                    Text(
-                                      'Search',
-                                      style: TextStyle(
-                                          fontSize: 15, color: Colors.green),
-                                    )
-                                  ],
+                                InkWell(
+                                  onTap: () {},
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Icon(
+                                        CupertinoIcons.search,
+                                        color: Theme.of(context).primaryColor,
+                                        size: 35,
+                                      ),
+                                      Text(
+                                        'Search',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            color:
+                                                Theme.of(context).primaryColor),
+                                      )
+                                    ],
+                                  ),
                                 ),
-                                SizedBox(
-                                  width: 30,
-                                ),
+                                // SizedBox(
+                                //   width: 30,
+                                // ),
                               ],
                             ),
                           ),
@@ -138,11 +152,11 @@ class _profileScreenState extends State<profileScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 Container(
                   width: double.infinity,
-                  color: Colors.grey[100],
+                  color: Theme.of(context).canvasColor,
                   child: Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: Column(
@@ -164,11 +178,11 @@ class _profileScreenState extends State<profileScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 Container(
                   width: double.infinity,
-                  color: Colors.grey[100],
+                  color: Theme.of(context).canvasColor,
                   child: Padding(
                     padding: const EdgeInsets.all(6.0),
                     child: Column(
@@ -186,30 +200,33 @@ class _profileScreenState extends State<profileScreen> {
                                     color: Colors.blueGrey[400],
                                     fontWeight: FontWeight.w500),
                               ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    '10',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.blueGrey[400],
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                  SizedBox(
-                                    width: 16,
-                                    child: IconButton(
-                                        alignment: Alignment.centerLeft,
-                                        splashRadius: 1,
-                                        padding: EdgeInsets.all(0),
-                                        iconSize: 15,
-                                        onPressed: () {},
-                                        icon: Icon(
-                                          Icons.arrow_forward_ios_rounded,
+                              Material(
+                                color: Colors.transparent,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      '10',
+                                      style: TextStyle(
+                                          fontSize: 14,
                                           color: Colors.blueGrey[400],
-                                        )),
-                                  ),
-                                ],
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    SizedBox(
+                                      width: 16,
+                                      child: IconButton(
+                                          splashRadius: 20,
+                                          alignment: Alignment.centerLeft,
+                                          padding: EdgeInsets.all(0),
+                                          iconSize: 15,
+                                          onPressed: () {},
+                                          icon: Icon(
+                                            Icons.arrow_forward_ios_rounded,
+                                            color: Colors.blueGrey[400],
+                                          )),
+                                    ),
+                                  ],
+                                ),
                               )
                             ],
                           ),
@@ -271,215 +288,255 @@ class _profileScreenState extends State<profileScreen> {
                 ),
                 Container(
                     width: double.infinity,
-                    color: Colors.grey[100],
+                    color: Theme.of(context).canvasColor,
                     child: Padding(
                         padding: const EdgeInsets.all(12.0),
-                        child: Column(children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Icon(
-                                  Icons.notifications,
-                                  color: Colors.blueGrey,
-                                  size: 30,
-                                ),
-                                Text(
-                                  'Mute notifications',
-                                  style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                Container(
-                                  width: 140,
-                                  alignment: AlignmentDirectional.centerEnd,
-                                  child: Switch(
-                                      activeColor: Colors.green[500],
-                                      value: switchvalue,
-                                      onChanged: (value) {
-                                        setState(() {
-                                          switchvalue = !switchvalue;
-                                        });
-                                      }),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Icon(
-                                  Icons.music_note_rounded,
-                                  color: Colors.blueGrey,
-                                  size: 30,
-                                ),
-                                Text(
-                                  'Custom notifications',
-                                  style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                SizedBox(
-                                  width: 120,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Icon(
-                                  Icons.image,
-                                  color: Colors.blueGrey,
-                                  size: 30,
-                                ),
-                                Text(
-                                  'Media Visibility',
-                                  style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                SizedBox(
-                                  width: 160,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ]))),
-                Container(
-                    width: double.infinity,
-                    color: Colors.grey[100],
-                    child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Column(children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Icon(
-                                  Icons.lock_rounded,
-                                  color: Colors.blueGrey,
-                                  size: 30,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                        child: Material(
+                          color: Colors.transparent,
+                          child: Column(children: [
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  switchvalue = !switchvalue;
+                                });
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
-                                      'Encryption',
-                                      style: TextStyle(
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.w500),
+                                    Icon(
+                                      Icons.notifications,
+                                      color: Colors.blueGrey,
+                                      size: 30,
                                     ),
-                                    Text(
-                                        'Messages and calls are end-to-end\necrypted. Tap to verify',
-                                        maxLines: 2,
-                                        softWrap: true,
-                                        style: TextStyle(
-                                          color: Colors.blueGrey[400],
-                                          fontWeight: FontWeight.w400,
-                                        ))
+                                    Text('Mute notifications',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText2),
+                                    Container(
+                                      width: 140,
+                                      alignment: AlignmentDirectional.centerEnd,
+                                      child: Switch(
+                                          //activecolor: Theme.of(context).primaryColor[500],
+                                          value: switchvalue,
+                                          onChanged: (value) {
+                                            setState(() {
+                                              switchvalue = !switchvalue;
+                                            });
+                                          }),
+                                    ),
                                   ],
                                 ),
-                                SizedBox(
-                                  width: 60,
-                                )
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Icon(
-                                  Icons.hourglass_bottom_rounded,
-                                  color: Colors.blueGrey,
-                                  size: 30,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Disappearing messages',
-                                      style: TextStyle(
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                    Text('Off',
-                                        maxLines: 2,
-                                        softWrap: true,
-                                        style: TextStyle(
-                                          color: Colors.blueGrey[400],
-                                          fontWeight: FontWeight.w400,
-                                        ))
-                                  ],
-                                ),
-                                SizedBox(
-                                  width: 90,
-                                )
-                              ],
-                            ),
-                          ),
-                        ]))),
-                Container(
-                    width: double.infinity,
-                    color: Colors.grey[100],
-                    child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '1 Goup in common',
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.blueGrey[400],
-                                    fontWeight: FontWeight.w500),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.all(5.0),
-                                child: Column(
+                            ),
+                            InkWell(
+                              onTap: () {},
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 5.0, bottom: 5.0),
-                                      child: Column(
-                                        children: [
-                                          Row(
-                                            children: [
-                                              CircleAvatar(
-                                                backgroundColor: Colors.green,
-                                                child: Icon(
-                                                  Icons.people_rounded,
-                                                  color: Colors.white,
-                                                  size: 30,
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                width: 15,
-                                              ),
-                                              Text(
-                                                'Create group with Ochako',
-                                                style: TextStyle(
-                                                    fontSize: 18,
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                              ),
-                                            ],
-                                          ),
-                                          Padding(
+                                    Icon(
+                                      Icons.music_note_rounded,
+                                      color: Colors.blueGrey,
+                                      size: 30,
+                                    ),
+                                    Text('Custom notifications',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText2),
+                                    SizedBox(
+                                      width: 120,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {},
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Icon(
+                                      Icons.image,
+                                      color: Colors.blueGrey,
+                                      size: 30,
+                                    ),
+                                    Text('Media Visibility',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText2),
+                                    SizedBox(
+                                      width: 160,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ]),
+                        ))),
+                SizedBox(height: 10),
+                Container(
+                    width: double.infinity,
+                    color: Theme.of(context).canvasColor,
+                    child: Material(
+                      color: Colors.transparent,
+                      child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Column(children: [
+                            InkWell(
+                              onTap: () {},
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Icon(
+                                      Icons.lock_rounded,
+                                      color: Colors.blueGrey,
+                                      size: 30,
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Encryption',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText2,
+                                        ),
+                                        Text(
+                                            'Messages and calls are end-to-end\necrypted. Tap to verify',
+                                            maxLines: 2,
+                                            softWrap: true,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .subtitle2)
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      width: 60,
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {},
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Icon(
+                                      Icons.hourglass_bottom_rounded,
+                                      color: Colors.blueGrey,
+                                      size: 30,
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Disappearing messages',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText2,
+                                        ),
+                                        Text('Off',
+                                            maxLines: 2,
+                                            softWrap: true,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .subtitle2)
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      width: 90,
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ])),
+                    )),
+                SizedBox(height: 10),
+                Container(
+                    width: double.infinity,
+                    color: Theme.of(context).canvasColor,
+                    child: Material(
+                      color: Colors.transparent,
+                      child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '1 Goup in common',
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.blueGrey[400],
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                Column(
+                                  children: [
+                                    Column(
+                                      children: [
+                                        InkWell(
+                                          onTap: () {},
+                                          child: Padding(
                                             padding: const EdgeInsets.only(
-                                                top: 15.0),
+                                              top: 12,
+                                              bottom: 12,
+                                              right: 5,
+                                              left: 5,
+                                            ),
                                             child: Row(
                                               children: [
                                                 CircleAvatar(
-                                                  backgroundColor: Colors.green,
+                                                  backgroundColor:
+                                                      Theme.of(context)
+                                                          .primaryColor,
+                                                  child: Icon(
+                                                    Icons.people_rounded,
+                                                    color: Colors.white,
+                                                    size: 30,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: 15,
+                                                ),
+                                                Text(
+                                                  'Create group with Ochako',
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyText2,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        InkWell(
+                                          onTap: () {},
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                              top: 12,
+                                              bottom: 12,
+                                              left: 5,
+                                              right: 5,
+                                            ),
+                                            child: Row(
+                                              children: [
+                                                CircleAvatar(
                                                   backgroundImage: AssetImage(
                                                       'images/izuku.jpg'),
                                                 ),
@@ -489,152 +546,168 @@ class _profileScreenState extends State<profileScreen> {
                                                 Column(children: [
                                                   Text(
                                                     'My Hero Academia',
-                                                    style: TextStyle(
-                                                        fontSize: 18,
-                                                        fontWeight:
-                                                            FontWeight.w500),
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .bodyText2,
                                                   ),
                                                 ]),
                                               ],
                                             ),
                                           ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                )
+                              ])),
+                    )),
+                SizedBox(height: 10),
+                Container(
+                    width: double.infinity,
+                    color: Theme.of(context).canvasColor,
+                    child: Material(
+                      color: Colors.transparent,
+                      child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Other phones',
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.blueGrey[400],
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 8.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            '+963 939 329 419',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyText2,
+                                          ),
+                                          Text(
+                                            'Second',
+                                            style: TextStyle(
+                                                color: Colors.blueGrey[500],
+                                                fontWeight: FontWeight.w400),
+                                          ),
                                         ],
                                       ),
-                                    ),
-                                  ],
+                                      Row(
+                                        children: [
+                                          IconButton(
+                                              onPressed: () {},
+                                              icon: Icon(
+                                                Icons.message_rounded,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                size: 28,
+                                              )),
+                                          IconButton(
+                                              onPressed: () {},
+                                              icon: Icon(
+                                                Icons.phone_rounded,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                size: 28,
+                                              )),
+                                          IconButton(
+                                              onPressed: () {},
+                                              icon: Icon(
+                                                CupertinoIcons
+                                                    .video_camera_solid,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                size: 30,
+                                              )),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              )
-                            ]))),
+                              ])),
+                    )),
+                SizedBox(height: 10),
                 Container(
                     width: double.infinity,
-                    color: Colors.grey[100],
-                    child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Other phones',
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.blueGrey[400],
-                                    fontWeight: FontWeight.w500),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 8.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                    color: Theme.of(context).canvasColor,
+                    child: Material(
+                      color: Colors.transparent,
+                      child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                InkWell(
+                                  onTap: () {},
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
                                       children: [
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                        Icon(
+                                          Icons.block_rounded,
+                                          color: Colors.redAccent,
+                                          size: 35,
+                                        ),
+                                        SizedBox(
+                                          width: 15,
+                                        ),
                                         Text(
-                                          '+963 939 329 419',
+                                          'Block Ochako Uraraka',
                                           style: TextStyle(
+                                              color: Colors.redAccent,
                                               fontSize: 18,
-                                              fontWeight: FontWeight.w500),
+                                              fontWeight: FontWeight.w600),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                InkWell(
+                                  onTap: () {},
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      children: [
+                                        SizedBox(
+                                          width: 7.5,
+                                        ),
+                                        Icon(
+                                          Icons.thumb_down_alt_rounded,
+                                          color: Colors.redAccent,
+                                          size: 30,
+                                        ),
+                                        SizedBox(
+                                          width: 15,
                                         ),
                                         Text(
-                                          'Second',
+                                          'Report Ochako Uraraka',
                                           style: TextStyle(
-                                              color: Colors.blueGrey[500],
-                                              fontWeight: FontWeight.w400),
-                                        ),
+                                              color: Colors.redAccent,
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w600),
+                                        )
                                       ],
                                     ),
-                                    Row(
-                                      children: [
-                                        IconButton(
-                                            onPressed: () {},
-                                            icon: Icon(
-                                              Icons.message_rounded,
-                                              color: Colors.green,
-                                              size: 28,
-                                            )),
-                                        IconButton(
-                                            onPressed: () {},
-                                            icon: Icon(
-                                              Icons.phone_rounded,
-                                              color: Colors.green,
-                                              size: 28,
-                                            )),
-                                        IconButton(
-                                            onPressed: () {},
-                                            icon: Icon(
-                                              CupertinoIcons.video_camera_solid,
-                                              color: Colors.green,
-                                              size: 30,
-                                            )),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ]))),
-                Container(
-                    width: double.infinity,
-                    color: Colors.grey[100],
-                    child: Padding(
-                        padding: const EdgeInsets.all(6.0),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 20.0),
-                                child: Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Icon(
-                                      Icons.block_rounded,
-                                      color: Colors.redAccent,
-                                      size: 35,
-                                    ),
-                                    SizedBox(
-                                      width: 15,
-                                    ),
-                                    Text(
-                                      'Block Ochako Uraraka',
-                                      style: TextStyle(
-                                          color: Colors.redAccent,
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w600),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 20.0, bottom: 4.0),
-                                child: Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 7.5,
-                                    ),
-                                    Icon(
-                                      Icons.thumb_down_alt_rounded,
-                                      color: Colors.redAccent,
-                                      size: 30,
-                                    ),
-                                    SizedBox(
-                                      width: 15,
-                                    ),
-                                    Text(
-                                      'Report Ochako Uraraka',
-                                      style: TextStyle(
-                                          color: Colors.redAccent,
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w600),
-                                    )
-                                  ],
-                                ),
-                              )
-                            ]))),
+                                  ),
+                                )
+                              ])),
+                    )),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 )
               ],
             ),
