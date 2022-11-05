@@ -32,11 +32,16 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
-  flutter_rating_stars: ^1.0.3+4
-  bloc: ^8.1.0
+  cupertino_icons: ^1.0.2 #IOS Icons
+  flutter_rating_stars: ^1.0.3+4 #working Rating stars widget
+  bloc: ^8.1.0 #Bloc State management
   flutter_bloc: ^8.1.1
-  day_night_switcher: ^0.2.0+1
+  day_night_switcher: ^0.2.0+1 #Animated Dark/Light Theme Button widget
+  dio: ^4.0.6 #Dio HTTP Handler
+  buildcondition: ^0.0.4 #Delay Loading Screen
+  #webview_flutter: ^3.0.4 #Link
+  #webviewx: ^0.2.1
+  shared_preferences: ^2.0.15
 
 dev_dependencies:
   flutter_test:
@@ -62,6 +67,7 @@ flutter:
   assets:
     - images/
     - images/hotels/
+    - images/fallback/
     # - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/cubit.dart';
-import 'package:flutter_application_1/login_screen.dart';
-import 'package:flutter_application_1/messenger.dart';
-import 'package:flutter_application_1/states.dart';
+import 'package:flutter_application_1/Services/Bloc%20Service/cubit.dart';
+import 'package:flutter_application_1/screens/login_screen.dart';
+import 'package:flutter_application_1/screens/messenger.dart';
+import 'package:flutter_application_1/Bloc%20Service/states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RegisterScreen extends StatelessWidget {

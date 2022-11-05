@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/hotels.dart';
+import 'package:flutter_application_1/models/hotels.dart';
+import 'package:flutter_application_1/screens/news.dart';
 import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 
 class StoreScreen extends StatefulWidget {
@@ -40,7 +41,10 @@ class _StoreScreenState extends State<StoreScreen> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => NewsScreen()));
+            },
             icon: Icon(
               Icons.filter_list_rounded,
             ),
@@ -51,7 +55,6 @@ class _StoreScreenState extends State<StoreScreen> {
               Icons.search,
             ),
           )
-          
         ],
       ),
       body: Padding(

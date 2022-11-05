@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/login_screen.dart';
-import 'package:flutter_application_1/places.dart';
-import 'package:flutter_application_1/profile.dart';
-import 'package:flutter_application_1/users.dart';
+import 'package:flutter_application_1/screens/login_screen.dart';
+import 'package:flutter_application_1/screens/places.dart';
+import 'package:flutter_application_1/screens/profile.dart';
+import 'package:flutter_application_1/models/users.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_application_1/cubit.dart';
-import 'package:flutter_application_1/states.dart';
+import 'package:flutter_application_1/Services/Bloc%20Service/cubit.dart';
+import 'package:flutter_application_1/Bloc%20Service/states.dart';
 import 'package:day_night_switcher/day_night_switcher.dart';
 
 class MessengerScreen extends StatelessWidget {
@@ -116,9 +116,9 @@ class MessengerScreen extends StatelessWidget {
                     physics: BouncingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) =>
-                        buildStoryItem(index, context),
+                        buildStoryItem(users[index], context),
                     // itemCount: names.length,
-                    itemCount: names.length,
+                    itemCount: users.length,
                   ),
                 ),
                 SizedBox(
@@ -128,99 +128,96 @@ class MessengerScreen extends StatelessWidget {
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) =>
-                        buildChatItem(index, context),
+                        buildChatItem(users[index], context),
                     separatorBuilder: (context, index) => Divider(
                           thickness: 1,
                         ),
-                    itemCount: names.length),
+                    itemCount: users.length),
               ],
             ),
           ),
         ),
         bottomNavigationBar: Container(
-          height: 64,
-          child: Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      CupertinoIcons.chat_bubble_fill,
-                      size: 35,
+          height: 60,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Icon(
+                    CupertinoIcons.chat_bubble_fill,
+                    size: 35,
+                    color: Colors.blue,
+                  ),
+                  Text(
+                    'Chats',
+                    style: TextStyle(
                       color: Colors.blue,
+                      fontWeight: FontWeight.w500,
                     ),
-                    Text(
-                      'Chats',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    )
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      CupertinoIcons.video_camera_solid,
-                      size: 35,
+                  )
+                ],
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Icon(
+                    CupertinoIcons.video_camera_solid,
+                    size: 35,
+                    color: Colors.blueGrey,
+                  ),
+                  Text(
+                    'Calls',
+                    style: TextStyle(
                       color: Colors.blueGrey,
+                      fontWeight: FontWeight.w500,
                     ),
-                    Text(
-                      'Calls',
-                      style: TextStyle(
-                        color: Colors.blueGrey,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    )
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      CupertinoIcons.person_2_fill,
-                      size: 35,
+                  )
+                ],
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Icon(
+                    CupertinoIcons.person_2_fill,
+                    size: 35,
+                    color: Colors.blueGrey,
+                  ),
+                  Text(
+                    'People',
+                    style: TextStyle(
                       color: Colors.blueGrey,
+                      fontWeight: FontWeight.w500,
                     ),
-                    Text(
-                      'People',
-                      style: TextStyle(
-                        color: Colors.blueGrey,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    )
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      CupertinoIcons.square_fill_on_square_fill,
-                      size: 35,
+                  )
+                ],
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Icon(
+                    CupertinoIcons.square_fill_on_square_fill,
+                    size: 35,
+                    color: Colors.blueGrey,
+                  ),
+                  Text(
+                    'Stories',
+                    style: TextStyle(
                       color: Colors.blueGrey,
+                      fontWeight: FontWeight.w500,
                     ),
-                    Text(
-                      'Stories',
-                      style: TextStyle(
-                        color: Colors.blueGrey,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    )
-                  ],
-                ),
-              ],
-            ),
+                  )
+                ],
+              ),
+            ],
           ),
         ),
       ),
     );
   }
 
-  Widget buildStoryItem(index, context) => InkWell(
+  Widget buildStoryItem(model, context) => InkWell(
         onTap: () {},
         child: SizedBox(
           width: 70,
@@ -231,7 +228,7 @@ class MessengerScreen extends StatelessWidget {
                 alignment: AlignmentDirectional.bottomEnd,
                 children: [
                   CircleAvatar(
-                    backgroundImage: AssetImage('${images[index]}'),
+                    backgroundImage: AssetImage('${model['image']}'),
                     radius: 30,
                   ),
                   Stack(
@@ -250,7 +247,7 @@ class MessengerScreen extends StatelessWidget {
                 ],
               ),
               Text(
-                '${names[index]}',
+                '${model['name']}',
                 maxLines: 2,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headline2,
@@ -261,7 +258,7 @@ class MessengerScreen extends StatelessWidget {
         ),
       );
 
-  Widget buildChatItem(index, context) => InkWell(
+  Widget buildChatItem(model, context) => InkWell(
         onTap: () {},
         child: SizedBox(
             width: double.infinity,
@@ -276,7 +273,7 @@ class MessengerScreen extends StatelessWidget {
                         alignment: AlignmentDirectional.bottomEnd,
                         children: [
                           CircleAvatar(
-                            backgroundImage: AssetImage('${images[index]}'),
+                            backgroundImage: AssetImage('${model['image']}'),
                             radius: 30,
                           ),
                           Stack(
@@ -300,13 +297,13 @@ class MessengerScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              '${names[index]}',
+                              '${model['name']}',
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: Theme.of(context).textTheme.headline1,
                             ),
                             Text(
-                              '${messages[index]}',
+                              '${model['message']}',
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: Theme.of(context).textTheme.bodyText1,
@@ -315,7 +312,7 @@ class MessengerScreen extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '${times[index]}',
+                        '${model['time']}',
                         style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w500,

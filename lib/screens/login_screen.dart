@@ -1,11 +1,9 @@
-import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/cubit.dart';
-import 'package:flutter_application_1/messenger.dart';
-import 'package:flutter_application_1/register_screen.dart';
-import 'package:flutter_application_1/states.dart';
+import 'package:flutter_application_1/Services/Bloc%20Service/cubit.dart';
+import 'package:flutter_application_1/screens/messenger.dart';
+import 'package:flutter_application_1/screens/register_screen.dart';
+import 'package:flutter_application_1/Bloc%20Service/states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -24,9 +22,7 @@ class LoginScreen extends StatelessWidget {
         builder: (context, state) {
           var cubit = PasswordCubit().get(context);
           return Scaffold(
-              appBar: AppBar(
-                title: Text('My APP'),
-              ),
+              appBar: AppBar(),
               body: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: SingleChildScrollView(
@@ -43,12 +39,12 @@ class LoginScreen extends StatelessWidget {
                             children: [
                               Icon(
                                 CupertinoIcons.square,
-                                color: Colors.black26,
+                                color: Colors.grey,
                                 size: 150,
                               ),
                               Icon(
                                 Icons.person,
-                                color: Colors.black26,
+                                color: Colors.grey,
                                 size: 100,
                               )
                             ]),
@@ -76,7 +72,7 @@ class LoginScreen extends StatelessWidget {
                               label: Text('Email'),
                               prefixIcon: Icon(Icons.email),
                               border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30))),
+                                  borderRadius: BorderRadius.circular(10))),
                         ),
                         SizedBox(
                           height: 12,
@@ -95,16 +91,27 @@ class LoginScreen extends StatelessWidget {
                           },
                           obscureText: !cubit.isShow,
                           decoration: InputDecoration(
+                              focusColor: Theme.of(context).primaryColor,
                               hintText: 'Password',
-                              prefixIcon: Icon(CupertinoIcons.lock_fill),
+                              prefixIcon: Icon(
+                                CupertinoIcons.lock_fill,
+                              ),
                               label: Text('Password'),
                               suffixIcon: IconButton(
                                   icon: cubit.icon,
                                   onPressed: () {
                                     cubit.controlPassword();
                                   }),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30))),
+                              prefixIconColor: Theme.of(context).primaryColor,
+                              enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Colors.grey, width: 2.0),
+                                  borderRadius: BorderRadius.circular(30)),
+                              focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 3.0),
+                                  borderRadius: BorderRadius.circular(10))),
                         ),
                         SizedBox(
                           height: 17,
@@ -121,12 +128,12 @@ class LoginScreen extends StatelessWidget {
                             },
                             child: Container(
                                 decoration: BoxDecoration(
-                                    color: Colors.black,
+                                    color: Theme.of(context).primaryColor,
                                     borderRadius: BorderRadius.circular(30)),
                                 width: double.infinity,
                                 padding: EdgeInsets.all(15),
                                 child: Text(
-                                  'login',
+                                  'Login',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: 20, color: Colors.white),
@@ -147,7 +154,8 @@ class LoginScreen extends StatelessWidget {
                               },
                               child: Text(
                                 'Register',
-                                style: TextStyle(fontWeight: FontWeight.w700),
+                                style: TextStyle(
+                                    fontSize: 17, fontWeight: FontWeight.w700),
                               ),
                             ),
                           ],
