@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Services/Bloc%20Service/cubit.dart';
-import 'package:flutter_application_1/Bloc%20Service/states.dart';
+import 'package:flutter_application_1/Services/Bloc%20Service/states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CounterScreen extends StatelessWidget {
