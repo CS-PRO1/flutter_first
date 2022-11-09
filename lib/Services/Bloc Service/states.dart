@@ -1,29 +1,25 @@
 abstract class AppStates {}
 
-class InitAppState extends AppStates {}
+class AppInitState extends AppStates {}
 
-class CountMinusState extends AppStates {}
+//Login
 
-class CountPlusState extends AppStates {}
+class AppLoginLoadingState extends AppStates {}
+
+class AppLoginErrorState extends AppStates {}
+
+class AppLoginSuccessState extends AppStates {}
+
+//Register
+
+class AppRegisterLoadingState extends AppStates {}
+
+class AppRegisterErrorState extends AppStates {}
+
+class AppRegisterSuccessState extends AppStates {}
+
+//Show/Hide Password
 
 class PasswordShowState extends AppStates {}
 
-class PasswordShowState2 extends AppStates {}
-
-class ChangeThemeState extends AppStates {}
-
-class GetDataSuccessState extends AppStates {}
-
-class GetDataErrorState extends AppStates {}
-
-class LoadingDataState extends AppStates {}
-
-class ChangeNavBarState extends AppStates {}
-
-class SearchLoadingState extends AppStates {}
-
-class SearchResultSuccessState extends AppStates {}
-
-class AppGetSearchErrorState extends AppStates {}
-
-class ColorChangeState extends AppStates {}
+class PasswordHideState extends AppStates {}
