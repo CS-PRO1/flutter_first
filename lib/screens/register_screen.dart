@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/screens/images.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_application_2/Services/Bloc%20Service/cubit.dart';
@@ -35,6 +37,10 @@ class RegisterScreen extends StatelessWidget {
                       key: formkey,
                       child: Column(
                         children: [
+                          
+                          CarouselSlider(
+                              items: images.map((e) => Image.asset(e)).toList(),
+                              options: CarouselOptions()),
                           SizedBox(
                             height: 50,
                           ),

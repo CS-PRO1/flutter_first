@@ -42,6 +42,7 @@ dependencies:
   #webview_flutter: ^3.0.4 #Link
   #webviewx: ^0.2.1
   shared_preferences: ^2.0.15
+  carousel_slider: ^4.1.1
   #fluttertoast: ^8.1.1
 
 dev_dependencies:

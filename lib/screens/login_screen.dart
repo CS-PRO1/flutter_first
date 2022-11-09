@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/screens/images.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_application_2/Services/Bloc%20Service/cubit.dart';
@@ -10,13 +12,10 @@ import 'package:flutter_application_2/Services/Bloc%20Service/states.dart';
 class LoginScreen extends StatelessWidget {
   var emailcontroller = TextEditingController();
   var passwordcontroller = TextEditingController();
-  String email = '';
-
   var formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    email = emailcontroller.text;
     return BlocProvider(
       create: (context) => AppCubit(),
       child: BlocConsumer<AppCubit, AppStates>(
@@ -50,6 +49,21 @@ class LoginScreen extends StatelessWidget {
                                 size: 100,
                               )
                             ]),
+                        CarouselSlider(
+                            items: images
+                                .map((e) => Image.asset(
+                                      e,
+                                      isAntiAlias: true,
+                                    ))
+                                .toList(),
+                            options: CarouselOptions(
+                                autoPlayCurve: Curves.bounceInOut,
+                                enableInfiniteScroll: false,
+                                pauseAutoPlayOnTouch: true,
+                                viewportFraction: 1,
+                                autoPlay: true,
+                                autoPlayInterval: Duration(seconds: 5),
+                                aspectRatio: 4 / 3)),
                         SizedBox(
                           height: 20,
                         ),
